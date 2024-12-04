@@ -1,13 +1,14 @@
 import MiniBar from "@/components/shared/MiniBar";
 import SearchBar from "@/components/shared/SearchBar";
+import Navbar from "@/components/shared/Navbar";
+import Shop from "./shop/page";
 
-const page = () => {
+const Home = () => {
   return (
     <>
-      <MiniBar />
-      <SearchBar />
+      <Shop />
     </>
   );
 };
 
-export default page;
+export default Home;
