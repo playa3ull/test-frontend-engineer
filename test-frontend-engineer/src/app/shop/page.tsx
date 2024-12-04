@@ -1,10 +1,30 @@
-import React from "react";
+"use client";
+import { Product } from "@/types/Product";
+import { fetchProductsData } from "@/utils/fetchData";
+import React, { useEffect, useState } from "react";
 
 const Shop: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoaded, setIsLoaded] = useState<boolean>(true);
+  console.log("products", products);
+
+  const fetchData = async () => {
+    setIsLoaded(true);
+    const res = await fetchProductsData();
+    setProducts(res);
+    setIsLoaded(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <section className="container mx-auto mt-8">
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-12 md:col-span-8 border">Products</div>
+        <div className="col-span-12 md:col-span-8 border">
+          {isLoaded ? <p>Loading...</p> : <>data is here</>}
+        </div>
 
         <div className="col-span-12 md:col-span-4 border">cart summary</div>
       </div>
