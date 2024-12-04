@@ -1,5 +1,6 @@
 import { Product } from "@/types/Product";
 import React from "react";
+import Rating from "./Rating";
 
 interface ProductCardProps {
   product: Product;
@@ -11,30 +12,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="m-10 mx-4 max-w-screen-lg overflow-hidden  border-b-2 pb-4  ">
       <div className="flex flex-col overflow-hidden bg-white sm:flex-row md:h-80">
-        <div className="order-first ml-auto h-48 w-full bg-gray-700 sm:order-none sm:h-auto sm:w-1/2 lg:w-2/5">
-          <img
-            className="h-full w-full object-cover"
-            src="https://images.unsplash.com/photo-1599751449128-eb7249c3d6b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
-            loading="lazy"
-          />
+        <div className="order-first   w-80 bg-white sm:order-none sm:h-auto sm:w-1/2 lg:w-80">
+          <img className="w-80 object-cover" src={img} loading="lazy" />
         </div>
 
         <div className="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
-          <h2 className="text-xl font-bold text-gray-900 md:text-2xl lg:text-4xl">
-            Winter Collection
+          <h2 className="text-xl font-sans text-blue-700 md:text-lg lg:text-lg">
+            {name}
           </h2>
-          <p className="mt-2 text-lg">By Luis Vuitton</p>
-          <p className="mt-4 mb-8 max-w-md text-gray-500">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam
-            iusto, cumque dolores sit odio ex.
+          <p className="mt-2 text-lg font-sans">Seller: {seller}</p>
+          <p className=" max-w-md text-xl text-white bg-black pl-3 py-1 mt-3 w-24">
+            ${price}
           </p>
-          <a
-            href="#"
-            className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-md bg-black px-6 py-2 text-white transition"
-          >
-            <span className="group flex w-full items-center justify-center rounded py-1 text-center font-bold">
-              {" "}
-              Shop now{" "}
+          <Rating star={star} />
+          <p className="my-3">only {stock} left in stock - order soon</p>
+          <a className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-[#EAC004] px-6 py-1 text-black transition">
+            <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
+              Add to Cart
             </span>
             <svg
               className="flex-0 group-hover:w-6 ml-4 h-6 w-0 transition-all"
