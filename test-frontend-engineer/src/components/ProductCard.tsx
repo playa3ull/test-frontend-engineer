@@ -8,9 +8,8 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { name, seller, stock, price, star, img } = product || {};
-  console.log(product);
   return (
-    <div className="m-10 mx-4 max-w-screen-lg overflow-hidden  border-b-2 pb-4  ">
+    <div className="m-10 mx-4 max-w-screen-lg overflow-hidden  border-b-[1.5px] pb-4  ">
       <div className="flex flex-col overflow-hidden bg-white sm:flex-row md:h-80">
         <div className="order-first   w-80 bg-white sm:order-none sm:h-auto sm:w-1/2 lg:w-80">
           <img className="w-80 object-cover" src={img} loading="lazy" />
@@ -18,14 +17,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <div className="flex w-full flex-col p-4 sm:w-1/2 sm:p-8 lg:w-3/5">
           <h2 className="text-xl font-sans text-blue-700 md:text-lg lg:text-lg">
-            {name}
+            {name.slice(0, 100)}
           </h2>
           <p className="mt-2 text-lg font-sans">Seller: {seller}</p>
           <p className=" max-w-md text-xl text-white bg-black pl-3 py-1 mt-3 w-24">
             ${price}
           </p>
           <Rating star={star} />
-          <p className="my-3">only {stock} left in stock - order soon</p>
+          <p className="my-3 text-gray-700 ">
+            only {stock} left in stock - order soon
+          </p>
           <a className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-[#EAC004] px-6 py-1 text-black transition">
             <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
               Add to Cart
