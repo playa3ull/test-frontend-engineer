@@ -1,11 +1,12 @@
 import MiniBar from "@/components/shared/MiniBar";
+import SearchBar from "@/components/shared/SearchBar";
 
 const page = () => {
   return (
-    <div>
+    <>
       <MiniBar />
-      <h1 className="text-red-700 font-bold text-5xl">Home Page</h1>
-    </div>
+      <SearchBar />
+    </>
   );
 };
 

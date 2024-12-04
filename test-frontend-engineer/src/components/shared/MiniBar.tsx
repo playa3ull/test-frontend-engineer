@@ -1,10 +1,10 @@
 import React from "react";
 
-const MiniBar = () => {
+const MiniBar: React.FC = () => {
   return (
     <section className="hidden lg:block ">
-      <section className="bg-[#262626] h-custom-1  text-white items-center flex font-normal">
-        <section className="container mx-auto ">
+      <div className="bg-[#262626] h-custom-1  text-white items-center flex font-normal">
+        <div className="container mx-auto ">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <p className="underline">Super Deal! free membership weekend</p>
@@ -64,8 +64,8 @@ const MiniBar = () => {
               </p>
             </div>
           </div>
-        </section>
-      </section>
+        </div>
+      </div>
     </section>
   );
 };
