@@ -1,4 +1,5 @@
 "use client";
+import ProductCard from "@/components/ProductCard";
 import { Product } from "@/types/Product";
 import { fetchProductsData } from "@/utils/fetchData";
 import React, { useEffect, useState } from "react";
@@ -22,8 +23,10 @@ const Shop: React.FC = () => {
   return (
     <section className="container mx-auto mt-8">
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-12 md:col-span-8 border">
-          {isLoaded ? <p>Loading...</p> : <>data is here</>}
+        <div className="col-span-12 md:col-span-8 ">
+          {products.map((product) => (
+            <ProductCard key={product?._id} product={product} />
+          ))}
         </div>
 
         <div className="col-span-12 md:col-span-4 border">cart summary</div>
