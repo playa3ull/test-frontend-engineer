@@ -1,7 +1,10 @@
+import MiniBar from "@/components/shared/MiniBar";
+
 const page = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <MiniBar />
+      <h1 className="text-red-700 font-bold text-5xl">Home Page</h1>
     </div>
   );
 };

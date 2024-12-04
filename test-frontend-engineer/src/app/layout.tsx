@@ -1,3 +1,5 @@
+import "../../globals.css";
+
 export const metadata = {
   title: "Shopping Cart | Let's Shop",
   description: "Powered by Next.js",
