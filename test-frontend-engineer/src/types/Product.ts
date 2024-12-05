@@ -3,20 +3,15 @@ export interface Product {
   key: string;
   category: string;
   name: string;
-  seller: string;
+  seller?: string;
   wholePrice: string;
   priceFraction: string;
-  stock: number;
+  stock?: number;
   star: number;
   starCount: number;
-  img: string;
+  img?: string;
   url: string;
-  features: Feature[];
   price: number;
   shipping: number;
-}
-
-export interface Feature {
-  description: string;
-  value: string;
+  quantity?: number;
 }

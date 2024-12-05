@@ -1,6 +1,7 @@
 import { Product } from "@/types/Product";
 import React from "react";
 import Rating from "./Rating";
+import { useCart } from "@/context/CartProvider";
 
 interface ProductCardProps {
   product: Product;
@@ -8,6 +9,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { name, seller, stock, price, star, img } = product || {};
+  const { addItem } = useCart();
   return (
     <div className="m-10 mx-4 max-w-screen-lg overflow-hidden  border-b-[1.5px] pb-4  ">
       <div className="flex flex-col overflow-hidden bg-white sm:flex-row md:h-80">
@@ -27,7 +29,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <p className="my-3 text-gray-700 ">
             only {stock} left in stock - order soon
           </p>
-          <a className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-[#EAC004] px-6 py-1 text-black transition">
+          <button
+            onClick={() =>
+              addItem({
+                id: product._id,
+                name: product.name,
+                price: product.price,
+                quantity: 0,
+              })
+            }
+            className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-[#EAC004] px-6 py-1 text-black transition"
+          >
             <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
               Add to Cart
             </span>
@@ -45,7 +57,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 d="M14 5l7 7m0 0l-7 7m7-7H3"
               />
             </svg>
-          </a>
+          </button>
         </div>
       </div>
     </div>

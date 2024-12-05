@@ -1,4 +1,5 @@
 "use client";
+import { CartSummary } from "@/components/CartSummary";
 import ProductCard from "@/components/ProductCard";
 import { Product } from "@/types/Product";
 import { fetchProductsData } from "@/utils/fetchData";
@@ -6,9 +7,8 @@ import React, { useEffect, useState } from "react";
 
 const Shop: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [isLoaded, setIsLoaded] = useState<boolean>(true);
-
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isLoaded, setIsLoaded] = useState<boolean>(true);
   const itemsPerPage: number = 5;
 
   const fetchData = async () => {
@@ -128,7 +128,9 @@ const Shop: React.FC = () => {
           )}
         </div>
 
-        <div className="col-span-12 md:col-span-4 border">cart summary</div>
+        <div className="col-span-12 md:col-span-4 border">
+          <CartSummary />
+        </div>
       </div>
     </section>
   );
