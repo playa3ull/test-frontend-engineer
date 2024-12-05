@@ -1,13 +1,11 @@
+"use client";
+
 import MiniBar from "@/components/shared/MiniBar";
 import "../../globals.css";
 import SearchBar from "@/components/shared/SearchBar";
 import Navbar from "@/components/shared/Navbar";
 import CartProvider from "@/context/CartProvider";
-
-export const metadata = {
-  title: "Shopping Cart | Let's Shop",
-  description: "Powered by Next.js",
-};
+import { Toaster, toast } from "sonner";
 
 export default function RootLayout({
   children,
@@ -22,6 +20,7 @@ export default function RootLayout({
           <SearchBar />
           <Navbar />
           {children}
+          <Toaster />
         </CartProvider>
       </body>
     </html>

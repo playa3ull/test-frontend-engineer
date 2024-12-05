@@ -2,6 +2,7 @@
 import { Product } from "@/types/Product";
 import { fetchProductsData } from "@/utils/fetchData";
 import React, { createContext, useState, useContext } from "react";
+import { toast } from "sonner";
 
 interface ProductInterface {
   id: string;
@@ -22,6 +23,7 @@ interface CartContextType {
     shipping: number;
     tax: number;
     total: number;
+    totalQuantity: number;
   };
 }
 
@@ -35,6 +37,7 @@ const CartContext = createContext<CartContextType>({
     shipping: 0,
     tax: 0,
     total: 0,
+    totalQuantity: 0,
   }),
 });
 
@@ -46,6 +49,7 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   const [cartItems, setCartItems] = useState<ProductInterface[]>([]);
 
   const addItem = (product: Omit<ProductInterface, "quantity">) => {
+    console.log("Button is Clicked", product);
     const existingItem = cartItems.find((item) => item.id === product.id);
     if (existingItem) {
       setCartItems(
@@ -55,8 +59,10 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
             : item
         )
       );
+      toast("Product is added in the cart 🛒 ");
     } else {
       setCartItems([...cartItems, { ...product, quantity: 1 }]);
+      toast("Product is added in the cart 🛒 ");
     }
   };
 
@@ -83,7 +89,12 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     const tax = subtotal * taxRate;
     const total = subtotal + shipping + tax;
 
-    return { subtotal, shipping, tax, total };
+    const totalQuantity = cartItems.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
+
+    return { subtotal, shipping, tax, total, totalQuantity };
   };
 
   return (
