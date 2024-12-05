@@ -9,7 +9,7 @@ const Shop: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isLoaded, setIsLoaded] = useState<boolean>(true);
-  const itemsPerPage: number = 5;
+  const itemsPerPage: number = 7;
 
   const fetchData = async () => {
     setIsLoaded(true);
@@ -62,8 +62,8 @@ const Shop: React.FC = () => {
             </div>
           )}
           {currentItems.length > 0 && (
-            <div className="flex flex-col items-center justify-center my-12">
-              <div className="flex text-gray-700">
+            <div className="flex  lg:w-full flex-col items-center justify-center my-12 ">
+              <div className="flex text-gray-700 justify-center">
                 <div
                   className={`h-8 w-8 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer ${
                     currentPage === 1 && "opacity-50 cursor-not-allowed"
@@ -121,14 +121,13 @@ const Shop: React.FC = () => {
                   >
                     <polyline points="9 18 15 12 9 6"></polyline>
                   </svg>
-                </div>{" "}
-                 
+                </div>
               </div>
             </div>
           )}
         </div>
 
-        <div className="col-span-12 md:col-span-4 border-l-[1.5px] h-96 fixed right-80">
+        <div className="col-span-12 md:col-span-4 border-l-[1.5px] h-96 fixed right-80 hidden lg:block">
           <CartSummary />
         </div>
       </div>

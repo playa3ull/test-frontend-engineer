@@ -5,18 +5,18 @@ import Link from "next/link";
 const SearchBar: React.FC = () => {
   return (
     <section className="">
-      <div className="container mx-auto grid grid-cols-12 gap-4">
-        <div className="col-span-2">
+      <div className="container mx-auto  grid grid-cols-12 gap-4">
+        <div className="lg:col-span-2 col-span-4">
           <Link href="/">
             <Image
               src={logo}
               alt="Logo of the website"
-              className="w-auto py-6"
+              className="w-auto py-6 ml-3 lg:ml-0"
             />
           </Link>
         </div>
 
-        <div className="col-span-7 flex items-center">
+        <div className="lg:col-span-7 flex items-center col-span-8 mr-3 lg:mr-0">
           <div className="mx-auto  w-screen max-w-screen-md">
             <form className="relative mx-auto flex w-full  items-center justify-between rounded-md border shadow-sm">
               <input
@@ -53,12 +53,12 @@ const SearchBar: React.FC = () => {
           </div>
         </div>
 
-        <div className="col-span-3 flex items-center gap-2 ">
+        <div className="col-span-3 flex items-center gap-2  ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="size-6"
+            className="size-6 hidden lg:block"
           >
             <path
               fillRule="evenodd"
@@ -67,7 +67,7 @@ const SearchBar: React.FC = () => {
             />
           </svg>
 
-          <div className="font-normal leading-[20px]">
+          <div className="font-normal leading-[20px] hidden lg:block">
             <p>Call us now </p>
             <p>+1 01 444 55 99</p>
           </div>
