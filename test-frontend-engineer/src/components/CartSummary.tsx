@@ -6,7 +6,7 @@ export const CartSummary = () => {
   const { subtotal, shipping, tax, total, totalQuantity } = calculateTotals();
 
   return (
-    <div className=" mt-16 ml-8">
+    <div className=" mt-16 ml-8 hidden lg:block">
       <h3 className="font-serif font-semibold text-xl mb-9">
         Summary <sup className="text-lg text-red-600 ">{totalQuantity}</sup>
       </h3>

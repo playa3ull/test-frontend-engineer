@@ -30,7 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <p className="my-3 text-gray-700 ">
             only {stock} left in stock - order soon
           </p>
-          <div className="flex gap-2">
+          <div className="flex lg:flex-row flex-col   gap-2">
             <Link href={`/shop/${product._id}`}>
               <button className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-black px-6 py-1 text-white transition hover:bg-gray-700">
                 <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
