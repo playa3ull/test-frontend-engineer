@@ -1,22 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import logo from "../../../public/images/logo.png";
 import Link from "next/link";
+import { useCart } from "@/context/CartProvider";
+import { useState } from "react";
+import { CartSummary } from "../CartSummary";
 
 const SearchBar: React.FC = () => {
+  const { calculateTotals } = useCart();
+  const { totalQuantity } = calculateTotals();
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <section className="">
       <div className="container mx-auto  grid grid-cols-12 gap-4">
-        <div className="lg:col-span-2 col-span-4">
+        <div className="lg:col-span-2 col-span-3">
           <Link href="/">
-            <Image
-              src={logo}
-              alt="Logo of the website"
-              className="w-auto py-6 ml-3 lg:ml-0"
-            />
+            <h3 className="text-sm lg:text-2xl font-serif my-6 mx-2 lg:mx-0 lg:my-4">
+              Sho<span className="text-[#e49d2a]">pp</span>ing Cart
+            </h3>
           </Link>
         </div>
 
-        <div className="lg:col-span-7 flex items-center col-span-8 mr-3 lg:mr-0">
+        <div className="lg:col-span-7 flex items-center col-span-7 ">
           <div className="mx-auto  w-screen max-w-screen-md">
             <form className="relative mx-auto flex w-full  items-center justify-between rounded-md border shadow-sm">
               <input
@@ -52,24 +64,60 @@ const SearchBar: React.FC = () => {
             </form>
           </div>
         </div>
-
-        <div className="col-span-3 flex items-center gap-2  ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="size-6 hidden lg:block"
+        <div className="lg:col-span-2 flex items-center col-span-2 ">
+          <button
+            onClick={toggleSidebar}
+            className="col-span-3 flex items-center gap-2  "
           >
-            <path
-              fillRule="evenodd"
-              d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
-              clipRule="evenodd"
-            />
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-7"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+              />
+            </svg>
 
-          <div className="font-normal leading-[20px] hidden lg:block">
-            <p>Call us now </p>
-            <p>+1 01 444 55 99</p>
+            <div className="bg-red-600 h-6 w-5 -ml-3 -mt-6 pt-1 text-white font-semibold rounded-full">
+              <sup>{totalQuantity}</sup>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div className="relative">
+        <div
+          className={`fixed inset-y-0 left-0 z-50 w-96 bg-gray-100 text-black transition-transform duration-300 ease-in-out transform ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          <div className="p-4">
+            <button
+              className="absolute top-4 right-4 text-white bg-red-500 hover:bg-red-700 rounded-full p-2"
+              onClick={toggleSidebar}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <h2 className="text-xl font-bold mb-4">Cart Summary</h2>
+            <CartSummary />
           </div>
         </div>
       </div>
