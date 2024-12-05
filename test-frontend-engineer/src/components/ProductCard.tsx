@@ -8,7 +8,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { name, seller, stock, price, star, img } = product || {};
+  const { name, seller, stock, price, star, img, shipping } = product || {};
   const { addItem } = useCart();
   return (
     <div className="m-10 mx-4 max-w-screen-lg overflow-hidden  border-b-[1.5px] pb-4  ">
@@ -36,6 +36,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 name: product.name,
                 price: product.price,
                 quantity: 0,
+                shipping: product.shipping,
               })
             }
             className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-[#EAC004] px-6 py-1 text-black transition"

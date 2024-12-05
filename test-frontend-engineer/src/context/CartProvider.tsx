@@ -1,16 +1,18 @@
 "use client";
 import React, { createContext, useState, useContext } from "react";
 
-interface Product {
+interface ProductInterface {
   id: string;
   name: string;
   price: number;
   quantity: number;
+  shipping: number;
+  weight?: number;
 }
 
 interface CartContextType {
-  cartItems: Product[];
-  addItem: (product: Product) => void;
+  cartItems: ProductInterface[];
+  addItem: (product: ProductInterface) => void;
   removeItem: (id: string) => void;
   clearCart: () => void;
   calculateTotals: () => {
@@ -39,9 +41,10 @@ export const useCart = () => useContext(CartContext);
 const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<ProductInterface[]>([]);
+  console.log("From cart", cartItems);
 
-  const addItem = (product: Omit<Product, "quantity">) => {
+  const addItem = (product: Omit<ProductInterface, "quantity">) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
     if (existingItem) {
       setCartItems(
@@ -69,13 +72,19 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       (acc, item) => acc + item.price * item.quantity,
       0
     );
-    const shipping = 10; // Adjust shipping cost as needed
-    const taxRate = 0.08; // Adjust tax rate as needed
+
+    const shipping = cartItems.reduce((acc, item) => {
+      const itemWeight = item.weight || 1;
+      return acc + itemWeight * item.quantity * 0.5;
+    }, 0);
+
+    const taxRate = 0.08;
     const tax = subtotal * taxRate;
     const total = subtotal + shipping + tax;
 
     return { subtotal, shipping, tax, total };
   };
+
   return (
     <CartContext.Provider
       value={{
