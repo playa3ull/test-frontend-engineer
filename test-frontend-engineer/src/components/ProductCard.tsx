@@ -2,6 +2,7 @@ import { Product } from "@/types/Product";
 import React from "react";
 import Rating from "./Rating";
 import { useCart } from "@/context/CartProvider";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: Product;
@@ -29,36 +30,60 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <p className="my-3 text-gray-700 ">
             only {stock} left in stock - order soon
           </p>
-          <button
-            onClick={() =>
-              addItem({
-                id: product._id,
-                name: product.name,
-                price: product.price,
-                quantity: 0,
-                shipping: product.shipping,
-              })
-            }
-            className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-[#EAC004] px-6 py-1 text-black transition"
-          >
-            <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
-              Add to Cart
-            </span>
-            <svg
-              className="flex-0 group-hover:w-6 ml-4 h-6 w-0 transition-all"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
+          <div className="flex gap-2">
+            <Link href={`/shop/${product._id}`}>
+              <button className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-black px-6 py-1 text-white transition hover:bg-gray-700">
+                <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
+                  See Details
+                </span>
+                <svg
+                  className="flex-0 group-hover:w-6 ml-4 h-6 w-0 transition-all"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </button>
+            </Link>
+
+            <button
+              onClick={() =>
+                addItem({
+                  id: product._id,
+                  name: product.name,
+                  price: product.price,
+                  quantity: 0,
+                  shipping: product.shipping,
+                })
+              }
+              className="group mt-auto flex w-44 cursor-pointer select-none items-center justify-center rounded-full bg-[#EAC004] px-6 py-1 text-black transition"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </button>
+              <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
+                Add to Cart
+              </span>
+              <svg
+                className="flex-0 group-hover:w-6 ml-4 h-6 w-0 transition-all"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -7,3 +7,8 @@ export const fetchProductsData = async (): Promise<Product[]> => {
   const data = await response.json();
   return data;
 };
+
+export const fetchProductById = async (id: string): Promise<Product | null> => {
+  const products = await fetchProductsData();
+  return products.find((product) => product._id === id) || null;
+};
