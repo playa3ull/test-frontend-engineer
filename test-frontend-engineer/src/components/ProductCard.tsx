@@ -56,6 +56,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <button
               onClick={() =>
                 addItem({
+                  img: product.img,
                   id: product._id,
                   name: product.name,
                   price: product.price,

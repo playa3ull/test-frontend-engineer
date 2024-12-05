@@ -11,6 +11,7 @@ interface ProductInterface {
   quantity: number;
   shipping: number;
   weight?: number;
+  img?: string;
 }
 
 interface CartContextType {
@@ -49,7 +50,6 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   const [cartItems, setCartItems] = useState<ProductInterface[]>([]);
 
   const addItem = (product: Omit<ProductInterface, "quantity">) => {
-    console.log("Button is Clicked", product);
     const existingItem = cartItems.find((item) => item.id === product.id);
     if (existingItem) {
       setCartItems(
@@ -72,6 +72,7 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const clearCart = () => {
     setCartItems([]);
+    toast("🛒Uahh, Cart is empty ⭕ ");
   };
 
   const calculateTotals = () => {

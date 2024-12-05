@@ -128,7 +128,7 @@ const Shop: React.FC = () => {
           )}
         </div>
 
-        <div className="col-span-12 md:col-span-4 border-l-[1.5px] h-80 fixed right-80">
+        <div className="col-span-12 md:col-span-4 border-l-[1.5px] h-96 fixed right-80">
           <CartSummary />
         </div>
       </div>

@@ -1,8 +1,10 @@
+"use client";
+
 import { useCart } from "@/context/CartProvider";
 import Link from "next/link";
 
 export const CartSummary = () => {
-  const { calculateTotals } = useCart();
+  const { calculateTotals, clearCart } = useCart();
   const { subtotal, shipping, tax, total, totalQuantity } = calculateTotals();
 
   return (
@@ -27,7 +29,7 @@ export const CartSummary = () => {
         <p className="font-semibold">${total.toFixed(2)}</p>
       </div>
       <div className="mt-7">
-        <Link href={`/shop/order-review`}>
+        <Link href={`/order-review`}>
           <button className="group mt-auto flex w-full cursor-pointer select-none items-center justify-center rounded-full bg-[#EAC004] px-6 py-1 text-white transition hover:bg-gray-700">
             <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
               Order Review
@@ -48,6 +50,15 @@ export const CartSummary = () => {
             </svg>
           </button>
         </Link>
+
+        <button
+          onClick={() => clearCart()}
+          className="group mt-4 flex w-full cursor-pointer select-none items-center justify-center rounded-full bg-black px-6 py-1 text-white transition hover:bg-gray-700"
+        >
+          <span className="group flex w-full items-center justify-center rounded py-1 text-center font-sans">
+            Clear Cart
+          </span>
+        </button>
       </div>
     </div>
   );
