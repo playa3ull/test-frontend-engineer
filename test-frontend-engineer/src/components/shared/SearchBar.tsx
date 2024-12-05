@@ -1,12 +1,19 @@
 import Image from "next/image";
 import logo from "../../../public/images/logo.png";
+import Link from "next/link";
 
 const SearchBar: React.FC = () => {
   return (
     <section className="">
       <div className="container mx-auto grid grid-cols-12 gap-4">
         <div className="col-span-2">
-          <Image src={logo} alt="Logo of the website" className="w-auto py-6" />
+          <Link href="/">
+            <Image
+              src={logo}
+              alt="Logo of the website"
+              className="w-auto py-6"
+            />
+          </Link>
         </div>
 
         <div className="col-span-7 flex items-center">
