@@ -17,7 +17,7 @@ This Next.js application, built with TypeScript and styled with Tailwind CSS, fu
 ### Functional
 - **Product Listing Page**:
   - Displays a list of products with images, names, price, daynamic rating of the product.
-  -Implements efficient pagination using lightweight UI components.
+  - Implements efficient pagination using lightweight UI components.
 - **Product Detail Page**:
   - Provides detailed product information.
   - Includes an "Add to Cart" button for seamless shopping.
