@@ -1,4 +1,6 @@
 "use client";
+import { Product } from "@/types/Product";
+import { fetchProductsData } from "@/utils/fetchData";
 import React, { createContext, useState, useContext } from "react";
 
 interface ProductInterface {
@@ -42,7 +44,6 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [cartItems, setCartItems] = useState<ProductInterface[]>([]);
-  console.log("From cart", cartItems);
 
   const addItem = (product: Omit<ProductInterface, "quantity">) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
