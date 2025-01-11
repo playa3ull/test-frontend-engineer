@@ -11,7 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        text: "var(--text)",
       },
+      boxShadow: {
+        "card": "0px 1px 3px 0px var(--text)",
+      }
     },
   },
   plugins: [],

@@ -1,17 +1,7 @@
 // Purpose: To create a service that fetches data from the fake store api
 
-interface IProduct {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  }
-}
+import { IHeaderTitle, IProduct } from "../types/interfaces";
+
 
 const BASE_URL = "https://fakestoreapi.com";
 
@@ -45,7 +35,7 @@ export const fetchProductsByCategory = async (category: string): Promise<IProduc
 
 ////////////// CATEGORIES //////////////
 
-export const fetchCategories = async (): Promise<string[]> => {
+export const fetchCategories = async (): Promise<IHeaderTitle[]> => {
   const response = await fetch(`${BASE_URL}/products/categories`);
   const categories = await response.json();
   console.log("🚀 ~ fetchCategories ~ categories:", categories)
