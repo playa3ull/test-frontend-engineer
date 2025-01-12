@@ -1,20 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import HeaderCart from "../common/HeaderCart";
-import { fetchCategories } from "../services";
-import { IHeaderTitle } from "../types/interfaces";
 import Image from "next/image";
 import logo from "../assets/playa3ull-logo.webp";
 import Link from "next/link";
 
 const Header = () => {
-  const [categories, setCategories] = useState<IHeaderTitle[]>([]);
-  useEffect(() => {
-    fetchCategories().then((data: IHeaderTitle[]) => {
-      setCategories(data);
-    });
-  }, []);
   return (
     <header>
       <nav className="flex justify-between items-center h-16 p-4 bg-secondary text-text">

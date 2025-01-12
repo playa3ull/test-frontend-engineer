@@ -8,7 +8,8 @@
   --primary: #161c23;
   --secondary: #212c35;
   --text: #fffdfe;
-  --p3green: #24a01a
+  --p3green: #24a01a;
+  --p3greenLight: #54b54d;
 }
 
 /* @media (prefers-color-scheme: dark) {
