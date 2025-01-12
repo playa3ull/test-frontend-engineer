@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import HeaderCart from "../common/HeaderCart";
-import HeaderTitle from "../common/HeaderTitle";
 import { fetchCategories } from "../services";
 import { IHeaderTitle } from "../types/interfaces";
 import Image from "next/image";
@@ -22,7 +21,7 @@ const Header = () => {
         <Link href="/" className="flex-1 basis-1/5">
           <Image src={logo} alt="Playa3ull Logo Image" height={48} />
         </Link>
-        <ul className="flex flex-row justify-center items-center space-x-4 flex-3 basis-3/5">
+        <ul className="flex flex-row justify-center items-center space-x-4 flex-3 basis-3/5 text-xl font-bold">
           <li>
             <Link href="https://playa3ull.games/" target="_blank">Official Home</Link>
           </li>

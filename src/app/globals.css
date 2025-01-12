@@ -7,7 +7,8 @@
   --foreground: #ededed;
   --primary: #161c23;
   --secondary: #212c35;
-  --text: #fffdfe
+  --text: #fffdfe;
+  --p3green: #24a01a
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -21,4 +22,5 @@ body {
   color: var(--text);
   background: var(--primary);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }

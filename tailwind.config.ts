@@ -14,9 +14,13 @@ export default {
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         text: "var(--text)",
+        p3green: "var(--p3green)",
       },
       boxShadow: {
         "card": "0px 1px 3px 0px var(--text)",
+      },
+      gridTemplateColumns: {
+        "gallery": "repeat(auto-fit, minmax(200px, 1fr))",
       }
     },
   },
